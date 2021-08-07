@@ -8,6 +8,9 @@ public class TextLoader {
 
     private String importTxt;
 
+    public TextLoader() {
+    }
+
     public TextLoader(String readAllBytes) {
         this.importTxt = readAllBytesJava(readAllBytes);
     }
@@ -16,6 +19,9 @@ public class TextLoader {
         return importTxt;
     }
 
+    public void setImportTxt(String importTxt) {
+        this.importTxt = importTxt;
+    }
 
     private static String readAllBytesJava(String filePath) {
         String contex = "";
