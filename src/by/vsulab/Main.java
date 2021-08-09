@@ -10,12 +10,13 @@ package by.vsulab;
  */
 
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("test");
 
         TextLoader textLoader = new TextLoader("/Users/sergeypodkolzin/Documents/GitHub/by.vsulab.task2/resources/warAndPeace.txt");
 
@@ -24,14 +25,10 @@ public class Main {
         filterTxt.setSentence(textLoader);
 
 
-        List<String> sentences = new ArrayList<String>(Arrays.asList(filterTxt.getSentence()));
+        List<String> sentences = new ArrayList<>(Arrays.asList(filterTxt.getSentence()));
         List<String> interrogativeSentences = new ArrayList<>();
-        int wordLength = 3;
+        int wordLength = 12;
         LinkedHashSet<String> answer = new LinkedHashSet<>();
-
-
-
-
 
 
         // поиск вопросительных предложений
@@ -40,46 +37,32 @@ public class Main {
         for (int i = 0; i < sentences.size(); i++) {
             if (sentences.get(i).charAt(sentences.get(i).length() - 1) == '?') {
                 interrogativeSentences.add(sentences.get(i).trim());
-                //System.out.println(sentences.get(i).charAt(sentences.get(i).length() - 1));
-
             }
         }
 
         String[] temp = interrogativeSentences.toArray(new String[interrogativeSentences.size()]);
 
-        for (int i = 0; i < temp.length; i++){
-            System.out.println(temp[i]);
-            System.out.println("888888");
+
+        // разделение предложения на слова и поиск слов с нужным колличеством букв
+
+        for (int i = 0; i < temp.length; i++) {
             temp[i] = temp[i].replaceAll("\\p{Punct}", "");
             String[] strings = temp[i].split(" ");
 
-            for (String string: strings){
-                if(string.length() == wordLength){
+            for (String string : strings) {
+                if (string.length() == wordLength) {
                     answer.add(string);
                 }
             }
         }
-        System.out.println(answer.toString());
-
-        for (String interrogativeSentence : interrogativeSentences) {
-//            if(interrogativeSentence.length() == wordLength){
-//                System.out.println(interrogativeSentence);;
-//            }
-//            System.out.println(interrogativeSentence);
-//            System.out.println(interrogativeSentence.length());
-//            System.out.println("*******");
-
-        }
-
-        for (int i = 0; i < interrogativeSentences.size(); i++){
-            for (int j = i; j < interrogativeSentences.get(i).length(); j++){
-//                if(interrogativeSentences.get(j).length() > 40){
-//                    System.out.println(interrogativeSentences.get(j));
-//                }
-//                temp.add(j,interrogativeSentences.get(i));
-            }
-        }
+        System.out.println("Во всех вопросительных предложениях текста найдены следующие слова из " + wordLength + " букв " + answer.toString());
 
 
+        // поиск почты в тексте
+
+//        String txt = "vitebsk12@mail.ru With reference to your job ad in xxx, I would like to submit my application for \t" +
+//                "he position of Web Content Editor in your company.  pop123@tut.by";
+
+        emailSearch.emailSearch(textLoader);
     }
 }
