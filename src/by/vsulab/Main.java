@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 
+
 public class Main {
     public static void main(String[] args) {
 
@@ -63,6 +64,10 @@ public class Main {
 //        String txt = "vitebsk12@mail.ru With reference to your job ad in xxx, I would like to submit my application for \t" +
 //                "he position of Web Content Editor in your company.  pop123@tut.by";
 
-        emailSearch.emailSearch(textLoader);
+//        String phoneTxt = "dklsfj; +375(33)612-12-12 kfjdl;f +375296509854 589302 +7(903)888-88-88";
+
+        EmailSearch.emailSearch(textLoader);
+
+        PhoneSearch.phoneSearch(textLoader);
     }
 }

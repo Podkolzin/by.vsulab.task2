@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class emailSearch extends TextLoader {
+public class EmailSearch extends TextLoader {
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -28,18 +28,18 @@ public class emailSearch extends TextLoader {
 
         String[] txtArray = textLoader.getImportTxt().split(" ");
 
-        ArrayList<String> email_list = new ArrayList<String>();
+        ArrayList<String> emailList = new ArrayList<>();
 
         for (int i = 0; i < txtArray.length; i++) {
             String email = txtArray[i];
 
             if (validate(txtArray[i])) {
-                email_list.add(email);
+                emailList.add(email);
             }
         }
-        if (email_list.size() != 0) {
+        if (emailList.size() != 0) {
 
-            System.out.println(Arrays.toString(new ArrayList[]{email_list}));
+            System.out.println(Arrays.toString(new ArrayList[]{emailList}));
         } else {
             System.out.println("В данном тексте нет электронной почты");
         }
